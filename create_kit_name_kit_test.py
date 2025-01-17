@@ -17,6 +17,7 @@ def positive_assert(kit_body,auth_token):
     user_body = get_kit_body(kit_body)
     user_response = sender_stand_request.post_new_client_kit(user_body,auth_token)
     assert user_response.status_code == 201
+    assert user_response.json()["name"] == user_body["name"]
 
 # Función de prueba negativa
 def negative_assert_code_400(kit_body,auth_token):
